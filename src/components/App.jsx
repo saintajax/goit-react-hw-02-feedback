@@ -21,12 +21,9 @@ export class App extends Component {
   }
 
   calcPositiveFeedsPercent() {
-    if (!this.state.good) {
-      return '0%';
-    } else if (!(this.state.neutral + this.state.bad)) {
-      return '100%';
-    }
-    return `${Math.round((this.state.good * 100) / this.countTotalFeeds())}%`;
+    return (
+      `${Math.round((this.state.good * 100) / this.countTotalFeeds())}%` || '0'
+    );
   }
 
   render() {
